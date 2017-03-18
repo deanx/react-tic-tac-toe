@@ -24,8 +24,9 @@ class Game extends Component {
 
     return className;
   }
+
   render() {
-    return ( <div>{this.props.game.gameStatus === 'won' ? <span>Winner!<button onClick={() => this.props.playGame({},[])}>play again!</button></span> : ''}<GameBoard {...this.props} getClassName={this.getClassName.bind(this)} move={this.move.bind(this)} / ></div>
+    return ( <GameBoard {...this.props} getClassName={this.getClassName.bind(this)} move={this.move.bind(this)} / >
     );
   }
 }

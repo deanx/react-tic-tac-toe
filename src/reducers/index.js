@@ -12,7 +12,7 @@ const game = (state, action) => {
     }).length === 3);
   }
 
-  const validateDiagonalWin = (moves, row, player) => {
+  const validateVictoryDiagonal = (moves, row, player) => {
     let diagonal1 = moves.filter((move) => {
       return (move.player === player) && ((move.x - move.y) === 2 || (move.y - move.x === 2) || (move.y === move.x && move.y === 2 && move.x === 2));
     });
@@ -28,26 +28,23 @@ const game = (state, action) => {
     if (moves.length < 5) return false;
     const horizontalWin = validateVictoryHorizontal(moves, lastMove.x, lastMove.player);
     const verticalWin = validateVictoryVertical(moves, lastMove.y, lastMove.player);
-    const diagonalWin = validateDiagonalWin(moves, lastMove.x, lastMove.player);
+    const diagonalWin = validateVictoryDiagonal(moves, lastMove.x, lastMove.player);
     if (horizontalWin || verticalWin || diagonalWin) {
       return true;
-    } else return false;
-
-  }
-
-  if (action.payload && action.payload.lastMove) {
-    if (theresAWinner(action.payload.gameMoves, action.payload.lastMove)) {
-      return {
-        gameMoves: action.payload.gameMoves,
-        player: action.payload.player,
-        gameStatus: 'won'
-      }
+    } else {
+      return false;
     }
   }
 
   let gameMoves = (action.payload && action.payload.gameMoves) || [];
   let player = (action.payload && action.payload.player) || 'X';
   let gameStatus = (action.payload && action.payload.gameStatus) || 'open';
+
+  if (action.payload && action.payload.lastMove) {
+    if (theresAWinner(action.payload.gameMoves, action.payload.lastMove)) {
+      gameStatus = 'won';
+    }
+  }
 
   return {
     player,
