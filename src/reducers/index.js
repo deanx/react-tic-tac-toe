@@ -1,3 +1,5 @@
+import { wonGameStatus } from '../constants';
+
 const game = (state, action) => {
 
   const validateVictoryHorizontal = (moves, line, player) => {
@@ -42,7 +44,7 @@ const game = (state, action) => {
 
   if (action.payload && action.payload.lastMove) {
     if (theresAWinner(action.payload.gameMoves, action.payload.lastMove)) {
-      gameStatus = 'won';
+      gameStatus = wonGameStatus;
     }
   }
 

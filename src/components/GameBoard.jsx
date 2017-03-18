@@ -2,18 +2,18 @@ import React from 'react';
 
 import GamePiece from './GamePiece';
 import './App.css';
-
+import { numRows, numCols, wonGameStatus } from '../constants';
 
 const gameBoard = (props) => {
-  
   return (
     <div>
-    {props.game.gameStatus === 'won' ? <span>Winner!<button onClick={() => props.playGame({},[])}>play again!</button></span> : ''}
+    {props.game.gameStatus === wonGameStatus ? <span>Winner!<button onClick={() => props.playGame({},[])}>play again!</button></span> : ''}
     <div className='gameBoard'>    
     {
-  [1,2,3,4,5,6,7,8,9].map((key) => {
-        let row = Math.ceil(key / 3);
-        let col = key % 3 || 3; 
+  [...Array(numRows * numCols).keys()].map((key) => {
+        key++;
+        let row = Math.ceil(key / numRows);
+        let col = key % numCols || numCols; 
         let className = props.getClassName(row, col);
 
         let innerProps = {
