@@ -1,0 +1,28 @@
+.gameBoard {
+    height: 100%;
+    width: 600px;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.gamePiece {
+    border: 1px solid black;
+    flex: 1 1 25%;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 8px;
+    text-align: center;
+    height: 150px;
+}
+
+.XMove {
+    background-color: red;
+}
+
+.OMove {
+    background-color: blue;
+}
