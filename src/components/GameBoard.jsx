@@ -20,10 +20,9 @@ const gameBoard = (props) => {
           row,
           col,
           className,
-          gameStatus:props.game.gameStatus,
           move: props.move,
         };
-        return <GamePiece key={ key } {...innerProps}/>
+        return <GamePiece key={ key } {...innerProps} />
       })
     }
     

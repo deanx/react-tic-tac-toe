@@ -6,13 +6,13 @@ import GameBoard from '../components/GameBoard';
 import playGame from '../actions/index';
 
 class Game extends Component {
-  move(x, y, gameStatus) {
+  move(x, y) {
     let movement = {
       x,
       y,
       player:this.props.game.player
     } 
-    this.props.playGame(movement, this.props.game.gameMoves, gameStatus); 
+    this.props.playGame(movement, this.props.game.gameMoves, this.props.game.gameStatus); 
   }
 
   getClassName(x, y) { 

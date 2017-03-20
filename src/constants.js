@@ -1,3 +1,9 @@
 export const numRows = 3;
 export const numCols = 3;
 export const wonGameStatus = 'won';
+export const openGameStatus = 'open';
+export const playerO = 'O';
+export const playerX = 'X';
+export const movementO = 'MOVEMENT_O';
+export const movementX = 'MOVEMENT_X';
+export const invalidMovement = 'INVALID';

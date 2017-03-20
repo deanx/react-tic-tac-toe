@@ -1,4 +1,4 @@
-import { wonGameStatus } from '../constants';
+import { wonGameStatus, movementO, movementX, playerO, playerX, invalidMovement } from '../constants';
 
 function alreadyPlayed(movement, gameMoves) {
   return (gameMoves.filter((pastMove) => {
@@ -10,7 +10,7 @@ function alreadyPlayed(movement, gameMoves) {
 function playGame(movement, gameMoves, gameStatus) {
   if (alreadyPlayed(movement, gameMoves) || gameStatus === wonGameStatus) {
     return {
-      type: 'INVALID',
+      type: invalidMovement,
       payload: {
         player: movement.player,
         gameMoves,
@@ -20,9 +20,9 @@ function playGame(movement, gameMoves, gameStatus) {
   }
 
   return {
-    type: movement.player === 'X' ? 'MOVEMENT_O' : 'MOVEMENT_X',
+    type: movement.player === playerX ? movementO : movementX,
     payload: {
-      player: movement.player === 'O' ? 'X' : 'O',
+      player: movement.player === playerO ? playerX : playerO,
       gameMoves: gameMoves.concat(movement),
       lastMove: movement
     }
