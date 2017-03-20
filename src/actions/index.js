@@ -1,10 +1,6 @@
 import { wonGameStatus, movementO, movementX, playerO, playerX, invalidMovement } from '../constants';
 
-function alreadyPlayed(movement, gameMoves) {
-  return (gameMoves.filter((pastMove) => {
-    return (pastMove.x === movement.x && pastMove.y === movement.y);
-  })).length > 0;
-}
+import { alreadyPlayed } from '../game'
 
 
 function playGame(movement, gameMoves, gameStatus) {

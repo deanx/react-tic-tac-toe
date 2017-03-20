@@ -7,12 +7,7 @@ import playGame from '../actions/index';
 
 class Game extends Component {
   move(x, y) {
-    let movement = {
-      x,
-      y,
-      player:this.props.game.player
-    } 
-    this.props.playGame(movement, this.props.game.gameMoves, this.props.game.gameStatus); 
+    this.props.playGame({x, y, player: this.props.game.player}, this.props.game.gameMoves, this.props.game.gameStatus); 
   }
 
   getClassName(x, y) { 
@@ -42,4 +37,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);
-

@@ -32,3 +32,10 @@ export const theresAWinner = (moves, lastMove) => {
     return false;
   }
 }
+
+
+export const alreadyPlayed = (movement, gameMoves) => {
+  return (gameMoves.filter((pastMove) => {
+    return (pastMove.x === movement.x && pastMove.y === movement.y);
+  })).length > 0;
+}
